@@ -16,7 +16,7 @@
 
 ## Install
 
-1. `git clone
+1. git clone
 2. create local .env if you don't have it
 3.
 ```
