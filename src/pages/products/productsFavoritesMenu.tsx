@@ -43,7 +43,7 @@ const StyledRowLink = styled(Link)`
 
 const StyledRowDeleteIcon = styled.img`
   height: 10px;
-  margin: 13px 0;
+  margin: 14px 0;
   cursor: pointer;
 `
 function ProductsFavoritesMenu({ allFavorites }: { allFavorites: Product[] }) {

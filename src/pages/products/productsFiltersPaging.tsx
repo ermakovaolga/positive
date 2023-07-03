@@ -15,8 +15,8 @@ import { PageParams } from 'src/types/productTypes'
 import { setParams } from 'src/redux/product/productActionDispatchers'
 import { useAction } from 'src/hooks/useActions'
 
-import ArrowUpIcon from 'src/theme/icons/up-arrow.svg'
-import ArrowDownIcon from 'src/theme/icons/down-arrow.svg'
+import ArrowUpIcon from 'src/theme/icons/up_arrow.svg'
+import ArrowDownIcon from 'src/theme/icons/down_arrow.svg'
 
 const StyledActiveFilter = styled.div`
   background: ${secondaryColor};
