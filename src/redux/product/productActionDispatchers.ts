@@ -1,10 +1,9 @@
 import { Dispatch } from '@reduxjs/toolkit'
 
+import { RequestError } from 'src/api/httpClient'
 import { PageParams, Product } from 'src/types/productTypes'
+import api from 'src/api'
 import allActions from 'src/redux/actions'
-
-import api from '../../api'
-import { RequestError } from '../../api/httpClient'
 
 export const fetchAllProducts = (onError: (error: RequestError) => void) => (dispatch: Dispatch) => {
   dispatch(allActions.produtsActions.setLoading(true))
@@ -27,8 +26,4 @@ export const setFavorites = (products: Product[]) => (dispatch: Dispatch) => {
 
 export const setParams = (params: PageParams) => (dispatch: Dispatch) => {
   dispatch(allActions.filtersActions.setPageParams(params))
-}
-
-export const setSort = (sort: string) => (dispatch: Dispatch) => {
-  dispatch(allActions.filtersActions.setSort(sort))
 }

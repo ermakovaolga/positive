@@ -2,9 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from '@emotion/styled'
 
+import { mainFont, mainTextColor, secondaryColor, secondaryTextColor } from 'src/constants/stylesConstants'
 import { Product } from 'src/types/productTypes'
 import { routing } from 'src/boot/routing'
-import { mainFont, mainTextColor, secondaryColor, secondaryTextColor } from 'src/constants/stylesConstants'
+
+import deleteIcon from 'src/theme/icons/cross.svg'
+import { useAction } from 'src/hooks/useActions'
+import { setFavorites } from 'src/redux/product/productActionDispatchers'
 
 const StyledAllFavoriteContainer = styled.div`
   display: grid;
@@ -29,13 +33,39 @@ const StyledAllFavoriteText = styled.div`
     color: ${secondaryTextColor};
   }
 `
+const StyledRow = styled.div`
+  display: flex;
+`
+const StyledRowLink = styled(Link)`
+  flex: 1;
+  text-decoration: none;
+`
+
+const StyledRowDeleteIcon = styled.img`
+  height: 10px;
+  margin: 13px 0;
+  cursor: pointer;
+`
 function ProductsFavoritesMenu({ allFavorites }: { allFavorites: Product[] }) {
+  const setFavoritesItems = useAction(setFavorites)
+
+  const onRemoveClickHandler = (product: Product) => {
+    setFavoritesItems(
+      allFavorites.filter(function (item) {
+        return item !== product
+      }),
+    )
+  }
+
   return (
     <StyledAllFavoriteContainer>
       {allFavorites?.map((favItem) => (
-        <Link key={favItem.id} to={routing.product.generatePath({ id: String(favItem.id) })}>
-          <StyledAllFavoriteText>{favItem.title}</StyledAllFavoriteText>
-        </Link>
+        <StyledRow key={favItem.id}>
+          <StyledRowLink to={routing.product.generatePath({ id: String(favItem.id) })}>
+            <StyledAllFavoriteText>{favItem.title}</StyledAllFavoriteText>
+          </StyledRowLink>
+          <StyledRowDeleteIcon src={deleteIcon} onClick={() => onRemoveClickHandler(favItem)} />
+        </StyledRow>
       ))}
     </StyledAllFavoriteContainer>
   )

@@ -8,13 +8,13 @@ import { getAllFavorites, getAllProducts, getLoading, getProductsByParams } from
 import { PageContainer } from 'src/containers/baseLayout'
 import { Product } from 'src/types/productTypes'
 import { RequestError } from 'src/api/httpClient'
+import { useAction } from 'src/hooks/useActions'
 import useSnackbarNotifications from 'src/hooks/useSnackbarNotifications'
 
 import ProductInfo from './productInfo'
 import ProductsCounters from './productsCounters'
 import ProductsFilters from './productsFilters'
-import Loader from './loader'
-import { useAction } from 'src/hooks/useActions'
+import Loader from '../common/loader'
 
 const StyledProductsContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);

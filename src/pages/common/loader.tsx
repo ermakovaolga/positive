@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+
 import { secondaryColor } from 'src/constants/stylesConstants'
 
 const StledLoaderHolder = styled.div`

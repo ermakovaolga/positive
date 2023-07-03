@@ -28,7 +28,7 @@ const StyledActiveFilter = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: 20px;
-  padding: 10px 16px;
+  padding: 12px 16px 0 16px;
 `
 const StyledNonActiveFilter = styled.div`
   cursor: pointer;
@@ -40,7 +40,7 @@ const StyledNonActiveFilter = styled.div`
   font-family: ${mainFont};
   font-style: normal;
   font-weight: 400;
-  padding: 10px 16px;
+  padding: 12px 16px 0 16px;
   line-height: 20px;
 `
 const StyledPagesContainer = styled.div`

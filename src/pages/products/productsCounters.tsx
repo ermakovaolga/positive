@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 
 import { greenTextColor, mainFont, mainTextColor } from 'src/constants/stylesConstants'
@@ -29,6 +29,7 @@ const StyledCounterHolder = styled.div`
 const StyledFavoriteCounterContainer = styled.div`
   cursor: pointer;
   color: ${mainTextColor};
+  display: flex;
   font-size: 16px;
   font-family: ${mainFont};
   font-style: normal;
@@ -44,15 +45,21 @@ function ProductsCounters({ allProductsLength, allFavorites }: { allProductsLeng
   const openFavofitesHandler = () => {
     setIsShowFavorites(!isShowFavorites)
   }
-  const counter = allFavorites?.length > 0 ? allFavorites.length : ''
+  const count = allFavorites?.length
+
+  useEffect(() => {
+    if (count === 0) {
+      setIsShowFavorites(false)
+    }
+  }, [count])
   return (
     <StyledCounterHolder>
       <StyledProductsCounter>
         Найдено <StyledProductsCounterValue>{allProductsLength}</StyledProductsCounterValue>
       </StyledProductsCounter>
       <StyledFavoriteCounterContainer>
-        {counter}
-        {!!allFavorites?.length && <StyledFavoriteCounterIcon src={favoritesIcon} onClick={openFavofitesHandler} />}
+        <div>{count === 0 ? '' : count}</div>
+        {!!count && <StyledFavoriteCounterIcon src={favoritesIcon} onClick={openFavofitesHandler} />}
       </StyledFavoriteCounterContainer>
       {!!isShowFavorites && <ProductsFavoritesMenu allFavorites={allFavorites} />}
     </StyledCounterHolder>

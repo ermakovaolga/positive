@@ -35,6 +35,5 @@ export interface FiltersState {
         direction: 'ASC' | 'DESC'
       }
     }
-    sort: string
   }
 }

@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
 
-import { PageContainer } from 'src/containers/baseLayout'
-import { Product, ProductsState } from 'src/types/productTypes'
 import {
   favoriteColor,
   greenTextColor,
@@ -12,6 +10,8 @@ import {
   secondaryTextColor,
   thirdColor,
 } from 'src/constants/stylesConstants'
+import { PageContainer } from 'src/containers/baseLayout'
+import { Product, ProductsState } from 'src/types/productTypes'
 
 const StyledProductContainer = styled.div`
   display: grid;
